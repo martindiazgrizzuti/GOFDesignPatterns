@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\GOFDesignPatterns.StrategyPattern\GOFDesignPatterns.StrategyPattern.csproj" />
+    <ProjectReference Include="..\GOFDesignPatterns.ObserverPattern\GOFDesignPatterns.ObserverPattern.csproj" />
   </ItemGroup>
 
 </Project>

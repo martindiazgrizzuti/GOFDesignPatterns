@@ -1,4 +1,5 @@
-﻿using GOFDesignPatterns.StrategyPattern;
+﻿using GOFDesignPatterns.ObserverPattern;
+using GOFDesignPatterns.StrategyPattern;
 using System;
 
 namespace GOFDesignPatterns.ConsoleApp
@@ -9,7 +10,8 @@ namespace GOFDesignPatterns.ConsoleApp
         enum OptionsEnum
         {
             Unknown = 0,
-            StrategyPattern
+            StrategyPattern,
+            ObserverPattern
         }
 
         static void Main(string[] args)
@@ -41,6 +43,37 @@ namespace GOFDesignPatterns.ConsoleApp
                         Console.WriteLine(mallardDuck.performFly());
                     }
                     break;
+                case OptionsEnum.ObserverPattern:
+                    {
+                        //WeatherData weatherData = new WeatherData();
+                        //CurrentConditionsDisplay currentConditionsDisplay = new CurrentConditionsDisplay(weatherData);
+                        //ForecastDisplay forecastDisplay = new ForecastDisplay(weatherData, 29.92f);
+                        ObserverPattern.SecondSolution.WeatherData weatherData = new ObserverPattern.SecondSolution.WeatherData();
+                        ObserverPattern.SecondSolution.CurrentConditionsDisplay currentConditionsDisplay = new ObserverPattern.SecondSolution.CurrentConditionsDisplay(weatherData);
+                        ObserverPattern.SecondSolution.ForecastDisplay forecastDisplay = new ObserverPattern.SecondSolution.ForecastDisplay(weatherData, 29.92f);
+                        Console.WriteLine("Setting measurements (t, h, p) = (80, 65, 30.4)...");
+                        weatherData.setMeasurements(80, 65, 30.4f);
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine(currentConditionsDisplay.display());
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine(forecastDisplay.display());
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("Setting measurements (t, h, p) = (82, 70, 29.2)...");
+                        weatherData.setMeasurements(82, 70, 29.2f);
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine(currentConditionsDisplay.display());
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine(forecastDisplay.display());
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("Setting measurements (t, h, p) = (78, 90, 29.2)...");
+                        weatherData.setMeasurements(78, 90, 29.2f);
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine(currentConditionsDisplay.display());
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine(forecastDisplay.display());
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    break;
             }
 
 
@@ -51,6 +84,7 @@ namespace GOFDesignPatterns.ConsoleApp
         {
             Console.WriteLine("What pattern would you test?");
             Console.WriteLine("1 - Strategy Pattern");
+            Console.WriteLine("2 - Observer Pattern");
             Console.Write("Ingrese su opcion: ");
             String opt = Console.ReadLine();
 
